@@ -1,14 +1,16 @@
 package com.example.schedulehomeworkapp.adapters;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import android.content.Context;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.schedulehomeworkapp.R;
+import com.example.schedulehomeworkapp.DBHelper;
 import com.example.schedulehomeworkapp.db.Task;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,11 +38,12 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.VH> {
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
         Task t = items.get(position);
+        Context context = holder.itemView.getContext();
+
         holder.title.setText(t.title == null ? "" : t.title);
         holder.disc.setText(t.disciplineName == null ? "" : t.disciplineName);
         holder.deadline.setText(t.getDeadlineLabel());
 
-        Context context = holder.itemView.getContext();
         if (t.isOverdue()) {
             holder.container.setCardBackgroundColor(
                     ContextCompat.getColor(context, android.R.color.holo_red_light)
@@ -54,6 +57,22 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.VH> {
         }
 
         holder.itemView.setAlpha(t.done ? 0.6f : 1.0f);
+
+        // 🗑️ Удаление по долгому нажатию
+        holder.itemView.setOnLongClickListener(v -> {
+            new AlertDialog.Builder(context)
+                    .setTitle("Удалить задание?")
+                    .setMessage("Удалить \"" + (t.title == null ? "задание" : t.title) + "\"?")
+                    .setPositiveButton("Удалить", (dialog, which) -> {
+                        DBHelper db = new DBHelper(context);
+                        db.deleteTask(t.id); // метод нужно добавить в DBHelper
+                        items.remove(position);
+                        notifyItemRemoved(position);
+                    })
+                    .setNegativeButton("Отмена", null)
+                    .show();
+            return true;
+        });
     }
 
     @Override

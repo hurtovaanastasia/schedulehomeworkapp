@@ -52,10 +52,6 @@ public class DBHelper extends SQLiteOpenHelper {
         String createTask = "CREATE TABLE "+TABLE_TASK+" ("+T_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+T_TITLE+" TEXT, "+T_DISCIPLINE_ID+" INTEGER, "+T_DEADLINE+" TEXT, "+T_PRIORITY+" INTEGER, "+T_DONE+" INTEGER DEFAULT 0);";
         db.execSQL(createDisc); db.execSQL(createLesson); db.execSQL(createTask);
 
-        // sample discipline
-        ContentValues v = new ContentValues();
-        v.put(D_NAME, "Математика"); v.put(D_TEACHER, "Петров И.И."); v.put(D_COLOR, 0xFFDDEFFF);
-        db.insert(TABLE_DISCIPLINE, null, v);
     }
 
     @Override public void onUpgrade(SQLiteDatabase db, int oldV, int newV){
@@ -167,5 +163,14 @@ public long addLesson(Long disciplineId, int dayOfWeek, String startIso, String 
     v.put(L_WEEK_TYPE, weekType);
     return db.insert(TABLE_LESSON, null, v);
 }
-
+    public void deleteLesson(long id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("lessons", "id=?", new String[]{String.valueOf(id)});
+        db.close();
+    }
+    public void deleteTask(long id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("tasks", "id=?", new String[]{String.valueOf(id)});
+        db.close();
+    }
 }
