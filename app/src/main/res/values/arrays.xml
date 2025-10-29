@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="weeks_array">
+        <item>Неделя 1</item>
+        <item>Неделя 2</item>
+        <item>Неделя 3</item>
+        <item>Неделя 4</item>
+    </string-array>
+    <string-array name="cycle_array">
+        <item>1 (еженед.)</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+</resources>
