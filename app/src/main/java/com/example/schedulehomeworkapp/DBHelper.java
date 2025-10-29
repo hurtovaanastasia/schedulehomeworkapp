@@ -173,4 +173,25 @@ public long addLesson(Long disciplineId, int dayOfWeek, String startIso, String 
         db.delete("tasks", "id=?", new String[]{String.valueOf(id)});
         db.close();
     }
+    // Возвращает список всех дисциплин
+    public List<String> getAllDisciplineNames() {
+        List<String> list = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT name FROM disciplines", null);
+        if (c.moveToFirst()) {
+            do {
+                list.add(c.getString(0));
+            } while (c.moveToNext());
+        }
+        c.close();
+        return list;
+    }
+
+    // Удаляет дисциплину по названию (и все связанные пары)
+    public void deleteDisciplineByName(String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("lessons", "disciplineName=?", new String[]{name});
+        db.delete("disciplines", "name=?", new String[]{name});
+    }
+
 }
