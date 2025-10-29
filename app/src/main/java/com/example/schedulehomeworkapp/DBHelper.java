@@ -190,8 +190,19 @@ public long addLesson(Long disciplineId, int dayOfWeek, String startIso, String 
     // Удаляет дисциплину по названию (и все связанные пары)
     public void deleteDisciplineByName(String name) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete("lessons", "disciplineName=?", new String[]{name});
+
+        // Находим ID дисциплины по имени
+        Cursor c = db.rawQuery("SELECT id FROM disciplines WHERE name=?", new String[]{name});
+        if (c.moveToFirst()) {
+            long disciplineId = c.getLong(0);
+
+            // Удаляем все пары и задачи, связанные с этой дисциплиной
+            db.delete("lessons", "discipline_id=?", new String[]{String.valueOf(disciplineId)});
+            db.delete("tasks", "discipline_id=?", new String[]{String.valueOf(disciplineId)});
+        }
+        c.close();
+
+        // Удаляем саму дисциплину
         db.delete("disciplines", "name=?", new String[]{name});
     }
-
 }
