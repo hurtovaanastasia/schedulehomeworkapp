@@ -4,8 +4,8 @@
     <application
         android:allowBackup="true"
         android:label="Расписание"
-        android:icon="@android:drawable/ic_menu_my_calendar"
-        android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+        android:icon="@drawable/literature_6177332"
+        android:theme="@style/AppTheme">
 
         <activity
             android:name=".MainActivity"
