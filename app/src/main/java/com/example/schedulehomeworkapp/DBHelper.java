@@ -173,6 +173,13 @@ public long addLesson(Long disciplineId, int dayOfWeek, String startIso, String 
         db.delete("tasks", "id=?", new String[]{String.valueOf(id)});
         db.close();
     }
+    public void updateTaskCompletionStatus(long taskId, boolean isCompleted) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(T_DONE, isCompleted ? 1 : 0);
+        db.update(TABLE_TASK, values, T_ID + " = ?", new String[]{String.valueOf(taskId)});
+        db.close();
+    }
     // Возвращает список всех дисциплин
     public List<String> getAllDisciplineNames() {
         List<String> list = new ArrayList<>();

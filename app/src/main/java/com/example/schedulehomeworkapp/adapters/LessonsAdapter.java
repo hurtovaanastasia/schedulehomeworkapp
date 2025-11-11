@@ -53,7 +53,7 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.VH> {
                     .setMessage("Удалить \"" + (it.disciplineName == null ? "занятие" : it.disciplineName) + "\"?")
                     .setPositiveButton("Удалить", (dialog, which) -> {
                         DBHelper db = new DBHelper(context);
-                        db.deleteLesson(it.id); // метод нужно добавить в DBHelper
+                        db.deleteLesson(it.id);
                         items.remove(position);
                         notifyItemRemoved(position);
                     })
