@@ -117,7 +117,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.VH> {
             // Слушатель сработает через чекбокс
         });
 
-        // 🗑️ Удаление по долгому нажатию
+        // 🗑 Удаление по долгому нажатию
         holder.itemView.setOnLongClickListener(v -> {
             new AlertDialog.Builder(context)
                     .setTitle("Удалить задание?")
