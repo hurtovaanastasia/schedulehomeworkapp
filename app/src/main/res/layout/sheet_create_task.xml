@@ -1,10 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content">
-<LinearLayout android:orientation="vertical" android:padding="16dp" android:layout_width="match_parent" android:layout_height="wrap_content">
-    <EditText android:id="@+id/et_task_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Название задачи" />
-    <Spinner android:id="@+id/spinner_disc_task" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" />
-    <EditText android:id="@+id/et_task_deadline" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Дедлайн (дд.MM.yyyy)" android:layout_marginTop="8dp" />
-    <Spinner android:id="@+id/spinner_priority" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" />
-    <Button android:id="@+id/btn_create_task" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Создать задачу" android:layout_marginTop="12dp" />
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/et_task_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Название задачи" />
+    <Spinner
+        android:id="@+id/spinner_disc_task"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp" />
+    <EditText
+        android:id="@+id/et_task_deadline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Дедлайн (дд.MM.yyyy)"
+        android:layout_marginTop="8dp" />
+    <Spinner
+        android:id="@+id/spinner_priority"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp" />
+    <Button
+        android:id="@+id/btn_create_task"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Создать задачу"
+        android:layout_marginTop="12dp" />
 </LinearLayout>
 </ScrollView>

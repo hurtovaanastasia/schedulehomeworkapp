@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:padding="16dp" android:layout_width="match_parent" android:layout_height="wrap_content">
-    <Button android:id="@+id/btn_create_disc" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Создать дисциплину" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <Button
+        android:id="@+id/btn_create_disc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Создать дисциплину" />
 
     <Button
         android:id="@+id/btn_create_lesson"
@@ -8,5 +16,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Назначить занятие" />
-    <Button android:id="@+id/btn_create_task" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Создать задачу" android:layout_marginTop="8dp" />
+    <Button
+        android:id="@+id/btn_create_task"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Создать задачу"
+        android:layout_marginTop="8dp" />
 </LinearLayout>

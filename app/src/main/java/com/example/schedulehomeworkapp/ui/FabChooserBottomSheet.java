@@ -1,6 +1,10 @@
 package com.example.schedulehomeworkapp.ui;
-import android.os.Bundle; import android.view.LayoutInflater; import android.view.View; import android.view.ViewGroup;
-import com.example.schedulehomeworkapp.R; import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.example.schedulehomeworkapp.R;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 public class FabChooserBottomSheet extends BottomSheetDialogFragment {
     public interface Callback { void onChoose(int choice); }
     private Callback cb;

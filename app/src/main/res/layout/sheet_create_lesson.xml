@@ -1,12 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content">
-<LinearLayout android:orientation="vertical" android:padding="16dp" android:layout_width="match_parent" android:layout_height="wrap_content">
-    <Spinner android:id="@+id/spinner_disc" android:layout_width="match_parent" android:layout_height="wrap_content" />
-    <Spinner android:id="@+id/spinner_day" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" />
-    <EditText android:id="@+id/et_start" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Время начала (08:30)" android:layout_marginTop="8dp" />
-    <EditText android:id="@+id/et_end" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Время окончания (10:00)" android:layout_marginTop="8dp" />
-    <EditText android:id="@+id/et_room" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Аудитория" android:layout_marginTop="8dp" />
-    <Spinner android:id="@+id/spinner_week_type" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" />
-    <Button android:id="@+id/btn_create_lesson" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Создать пару" android:layout_marginTop="12dp" />
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <Spinner
+        android:id="@+id/spinner_disc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Spinner android:id="@+id/spinner_day"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp" />
+    <EditText
+        android:id="@+id/et_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Время начала (08:30)"
+        android:layout_marginTop="8dp" />
+    <EditText
+        android:id="@+id/et_end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Время окончания (10:00)"
+        android:layout_marginTop="8dp" />
+    <EditText
+        android:id="@+id/et_room"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Аудитория"
+        android:layout_marginTop="8dp" />
+    <Spinner
+        android:id="@+id/spinner_week_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp" />
+    <Button
+        android:id="@+id/btn_create_lesson"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Создать пару"
+        android:layout_marginTop="12dp" />
 </LinearLayout>
 </ScrollView>
