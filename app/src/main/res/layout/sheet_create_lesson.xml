@@ -42,7 +42,7 @@
         android:id="@+id/btn_create_lesson"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Создать пару"
+        android:text="Создать занятие"
         android:layout_marginTop="12dp" />
 </LinearLayout>
 </ScrollView>
