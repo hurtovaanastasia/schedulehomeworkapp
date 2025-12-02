@@ -29,7 +29,6 @@ public class SettingsFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_settings, container, false);
 
-        // Настройка количества недель (цикла)
         Spinner s = v.findViewById(R.id.spinner_cycle_mode);
         String[] modes = {"1 (еженед.)", "2", "3", "4"};
         ArrayAdapter<String> aa = new ArrayAdapter<>(requireContext(),
@@ -55,14 +54,11 @@ public class SettingsFragment extends Fragment {
             public void onNothingSelected(android.widget.AdapterView<?> parent) {}
         });
 
-        //  Кнопка управления дисциплинами
         Button manageDisciplines = v.findViewById(R.id.btn_manage_disciplines);
         manageDisciplines.setOnClickListener(x -> showDisciplineDialog());
-
         return v;
     }
 
-    //  Диалог со списком дисциплин (долгое нажатие — удалить)
     private void showDisciplineDialog() {
         DBHelper db = new DBHelper(requireContext());
         List<String> disciplines = db.getAllDisciplineNames();

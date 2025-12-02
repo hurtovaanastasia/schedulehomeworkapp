@@ -150,9 +150,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return list;
     }
 
-
-// Lessons CRUD
-public long addLesson(Long disciplineId, int dayOfWeek, String startIso, String endIso, String room, int weekType){
+    public long addLesson(Long disciplineId, int dayOfWeek, String startIso, String endIso, String room, int weekType){
     SQLiteDatabase db = getWritableDatabase();
     ContentValues v = new ContentValues();
     if (disciplineId!=null) v.put(L_DISCIPLINE_ID, disciplineId);
@@ -180,7 +178,6 @@ public long addLesson(Long disciplineId, int dayOfWeek, String startIso, String 
         db.update(TABLE_TASK, values, T_ID + " = ?", new String[]{String.valueOf(taskId)});
         db.close();
     }
-    // Возвращает список всех дисциплин
     public List<String> getAllDisciplineNames() {
         List<String> list = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -194,22 +191,18 @@ public long addLesson(Long disciplineId, int dayOfWeek, String startIso, String 
         return list;
     }
 
-    // Удаляет дисциплину по названию (и все связанные пары)
     public void deleteDisciplineByName(String name) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        // Находим ID дисциплины по имени
         Cursor c = db.rawQuery("SELECT id FROM disciplines WHERE name=?", new String[]{name});
         if (c.moveToFirst()) {
             long disciplineId = c.getLong(0);
 
-            // Удаляем все пары и задачи, связанные с этой дисциплиной
             db.delete("lessons", "discipline_id=?", new String[]{String.valueOf(disciplineId)});
             db.delete("tasks", "discipline_id=?", new String[]{String.valueOf(disciplineId)});
         }
         c.close();
 
-        // Удаляем саму дисциплину
         db.delete("disciplines", "name=?", new String[]{name});
     }
 }

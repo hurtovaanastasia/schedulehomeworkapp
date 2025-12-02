@@ -61,22 +61,18 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.VH> {
         holder.disc.setText(t.disciplineName == null ? "" : t.disciplineName);
         holder.deadline.setText(t.getDeadlineLabel());
 
-        // Устанавливаем состояние чекбокса без вызова слушателя
         holder.checkBox.setOnCheckedChangeListener(null);
         holder.checkBox.setChecked(t.done);
 
-        // Настраиваем визуальное отображение в зависимости от статуса выполнения
         if (t.done) {
-            // Стиль для выполненного задания
             holder.container.setCardBackgroundColor(
-                    ContextCompat.getColor(context, R.color.task_completed_background) // Создайте этот цвет в colors.xml
+                    ContextCompat.getColor(context, R.color.task_completed_background)
             );
             holder.title.setAlpha(0.6f);
             holder.disc.setAlpha(0.6f);
             holder.deadline.setAlpha(0.6f);
             holder.overdue.setVisibility(View.GONE);
         } else if (t.isOverdue()) {
-            // Стиль для просроченного задания
             holder.container.setCardBackgroundColor(
                     ContextCompat.getColor(context, android.R.color.holo_red_light)
             );
@@ -85,7 +81,6 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.VH> {
             holder.deadline.setAlpha(1.0f);
             holder.overdue.setVisibility(View.VISIBLE);
         } else {
-            // Стиль для активного задания
             holder.container.setCardBackgroundColor(
                     ContextCompat.getColor(context, android.R.color.background_light)
             );
@@ -95,29 +90,22 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.VH> {
             holder.overdue.setVisibility(View.GONE);
         }
 
-        // Обработчик изменения состояния чекбокса
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (statusChangeListener != null) {
-                    // Обновляем статус задачи
                     t.done = isChecked;
                     statusChangeListener.onTaskStatusChanged(t, isChecked);
-
-                    // Обновляем отображение
                     notifyItemChanged(position);
                 }
             }
         });
 
-        // Обработчик клика по всей карточке (альтернативный способ отметки)
         holder.itemView.setOnClickListener(v -> {
             boolean newState = !t.done;
             holder.checkBox.setChecked(newState);
-            // Слушатель сработает через чекбокс
         });
 
-        // 🗑 Удаление по долгому нажатию
         holder.itemView.setOnLongClickListener(v -> {
             new AlertDialog.Builder(context)
                     .setTitle("Удалить задание?")

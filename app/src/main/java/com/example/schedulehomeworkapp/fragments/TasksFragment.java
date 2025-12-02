@@ -34,14 +34,10 @@ public class TasksFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         View v = inflater.inflate(R.layout.fragment_tasks, container, false);
         db = new DBHelper(requireContext());
-
-        // Инициализация адаптера с callback для отметки выполнения
         adapter = new TasksAdapter(new TasksAdapter.OnTaskStatusChangeListener() {
             @Override
             public void onTaskStatusChanged(Task task, boolean isCompleted) {
-                // Обновляем статус задачи в базе данных
                 db.updateTaskCompletionStatus(task.id, isCompleted);
-                // Обновляем список задач
                 refreshTasksList();
             }
         });
@@ -60,7 +56,6 @@ public class TasksFragment extends Fragment {
                 if (choice==0){
                     CreateDisciplineBottomSheet d = new CreateDisciplineBottomSheet();
                     d.setCallback(() -> {
-                        // Обновляем спиннер и список задач при создании новой дисциплины
                         setupDisciplineSpinner();
                         filterDisc.setSelection(0);
                     });
@@ -76,7 +71,6 @@ public class TasksFragment extends Fragment {
                 } else {
                     CreateTaskBottomSheet t = new CreateTaskBottomSheet();
                     t.setCallback(() -> {
-                        // Обновляем список задач при создании новой задачи
                         refreshTasksList();
                         filterDisc.setSelection(0);
                     });
@@ -89,7 +83,6 @@ public class TasksFragment extends Fragment {
         return v;
     }
 
-    // Метод для настройки спиннера с дисциплинами
     private void setupDisciplineSpinner() {
         disciplinesList = db.getAllDisciplines();
         List<String> names = new ArrayList<>();
@@ -113,7 +106,6 @@ public class TasksFragment extends Fragment {
         filterDisc.setSelection(0);
     }
 
-    // Метод для обновления списка задач
     private void refreshTasksList() {
         int position = filterDisc.getSelectedItemPosition();
         long filterId = -1;
@@ -127,7 +119,6 @@ public class TasksFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        // Обновляем список задач при возвращении на фрагмент
         refreshTasksList();
     }
 }

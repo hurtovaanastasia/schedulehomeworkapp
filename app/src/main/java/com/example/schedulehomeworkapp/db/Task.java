@@ -37,7 +37,6 @@ public class Task {
         } else if (days == -1) {
             return "Вчера, " + formatDate();
         } else {
-            // Показываем количество дней до/после дедлайна, если не сегодня/завтра/вчера
             if (days > 1) {
                 return "Через " + days + " дн., " + formatDate();
             } else {

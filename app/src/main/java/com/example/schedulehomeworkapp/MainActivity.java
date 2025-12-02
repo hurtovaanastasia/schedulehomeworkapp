@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(s);
         setContentView(R.layout.activity_main);
         BottomNavigationView nav = findViewById(R.id.bottom_navigation);
-        // default fragment
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ScheduleFragment()).commit();
         nav.setOnItemSelectedListener(item -> {
             Fragment sel = null;
